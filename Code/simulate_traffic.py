@@ -4,14 +4,45 @@ import csv
 import os
 import json
 
+def coord_to_node(coord):
+    x, y = map(int, coord.split(','))
+    return chr(ord('A') + x) + str(y)
+
+def get_outgoing_edges(node, edge_list):
+    # SUMO edge IDs are like A0A1, A1A2, etc. (not internal edges starting with ":")
+    return [e for e in edge_list if e.startswith(node) and not e.startswith(":")]
+
+def create_route(vehicle_id, node_list, edge_list):
+    """Create a valid SUMO route from a sequence of node IDs using shortest paths."""
+    edges = []
+    for i in range(len(node_list) - 1):
+        from_node = node_list[i]
+        to_node = node_list[i + 1]
+        from_edges = get_outgoing_edges(from_node, edge_list)
+        to_edges = get_outgoing_edges(to_node, edge_list)
+        if not from_edges or not to_edges:
+            raise Exception(f"No outgoing edges from {from_node} or {to_node}")
+        # Use first outgoing edge as start, first outgoing as end
+        from_edge = from_edges[0]
+        to_edge = to_edges[0]
+        route = traci.simulation.findRoute(from_edge, to_edge)
+        if not route.edges:
+            raise Exception(f"No route from {from_edge} to {to_edge}")
+        # Avoid duplicate edges when concatenating
+        if edges and route.edges[0] == edges[-1]:
+            edges.extend(route.edges[1:])
+        else:
+            edges.extend(route.edges)
+    traci.route.add(f"route_{vehicle_id}", edges)
+    return edges
+
 # Load data
 with open('../simulations/sumo/ride_requests.csv', 'r') as f:
     rides = list(csv.DictReader(f))
-    
+
 with open('../QUBO/vehicle_routes.json', 'r') as f:
     quantum_assignments = json.load(f)
 
-# SUMO configuration
 sumo_cmd = [
     "sumo-gui" if os.name == 'nt' else "sumo",
     "-c", "../simulations/sumo/grid.sumocfg",
@@ -19,56 +50,30 @@ sumo_cmd = [
     "--tripinfo-output", "../simulations/results/tripinfo_quantum.xml"
 ]
 
-def create_route(vehicle_id, nodes):
-    """Create valid SUMO routes from node sequence"""
-    edges = []
-    for i in range(len(nodes)-1):
-        from_node = nodes[i].replace("_", ",")
-        to_node = nodes[i+1].replace("_", ",")
-        edge_id = f"edge_{from_node}_to_{to_node}"
-        
-        # Verify edge exists
-        if edge_id not in traci.edge.getIDList():
-            print(f"Warning: Edge {edge_id} does not exist! Using shortest path.")
-            edges.extend(traci.simulation.findRoute(from_node, to_node).edges)
-        else:
-            edges.append(edge_id)
-            
-    traci.route.add(f"route_{vehicle_id}", edges)
-    return edges
-
 def assign_quantum_routes():
-    """Assign quantum-optimized routes"""
-    all_nodes = traci.edge.getIDList()  # Get valid edges
-    
+    edge_list = traci.edge.getIDList()
     for veh_id, rider_ids in quantum_assignments.items():
-        veh_id = f"veh_{veh_id}"
-        
-        # 1. Build node sequence: depot -> pickups -> dropoffs
-        nodes = ["0,0"]  # Start from depot
-        
-        # Add pickup nodes
+        veh_id_str = f"veh_{veh_id}"
+        # Build node sequence: depot -> pickups -> dropoffs
+        nodes = [coord_to_node("0,0")]  # Start from depot at A0
         for rider_id in rider_ids:
             pickup = rides[int(rider_id)]['pickup']
-            if pickup not in nodes:
-                nodes.append(pickup)
-                
-        # Add dropoff nodes
+            pickup_node = coord_to_node(pickup)
+            if pickup_node not in nodes:
+                nodes.append(pickup_node)
         for rider_id in rider_ids:
             dropoff = rides[int(rider_id)]['dropoff']
-            nodes.append(dropoff)
-            
-        # 2. Create valid route
+            dropoff_node = coord_to_node(dropoff)
+            nodes.append(dropoff_node)
         try:
-            route_edges = create_route(veh_id, nodes)
-            traci.vehicle.add(veh_id, f"route_{veh_id}", typeID="taxi", depart=0)
-            traci.vehicle.setPersonCapacity(veh_id, 4)
-        except traci.exceptions.TraCIException as e:
-            print(f"Failed to create route for {veh_id}: {str(e)}")
+            route_edges = create_route(veh_id_str, nodes, edge_list)
+            traci.vehicle.add(veh_id_str, f"route_{veh_id_str}", typeID="taxi", depart=0)
+            # traci.vehicle.setPersonCapacity(veh_id_str, 4)
+        except Exception as e:
+            print(f"Failed to create route for {veh_id_str}: {str(e)}")
 
 # Main simulation
 traci.start(sumo_cmd)
-print("Valid edges:", traci.edge.getIDList())  # Debugging
 assign_quantum_routes()
 
 while traci.simulation.getMinExpectedNumber() > 0:

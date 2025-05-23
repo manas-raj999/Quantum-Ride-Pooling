@@ -3,9 +3,9 @@ import csv
 
 rides = []
 for i in range(50):
-    pickup = (random.randint(0, 3), random.randint(0, 3))   # ← fixed
-    dropoff = (random.randint(0, 3), random.randint(0, 3))  # ← fixed
-    depart = random.randint(0, 300)  # 0-5 minutes
+    pickup = (random.randint(0, 3), random.randint(0, 3))
+    dropoff = (random.randint(0, 3), random.randint(0, 3))
+    depart = random.randint(0, 300)
     rides.append({
         'id': i,
         'pickup': f"{pickup[0]},{pickup[1]}",
