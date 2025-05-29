@@ -1,0 +1,45 @@
+{
+  "solver": "simulated_annealing",
+  "solve_time_sec": 10.281393766403198,
+  "energy": -339989.5,
+  "is_valid": false,
+  "assignments": {
+    "0": [
+      34
+    ],
+    "1": [
+      37,
+      39
+    ],
+    "2": [
+      16,
+      39
+    ],
+    "3": [
+      39
+    ],
+    "4": [
+      16
+    ],
+    "5": [
+      34
+    ],
+    "6": [
+      37
+    ],
+    "7": [
+      16
+    ],
+    "8": [
+      34
+    ],
+    "9": [
+      37
+    ]
+  },
+  "num_reads": 1000,
+  "sampleset_info": {
+    "num_occurrences": 1,
+    "chain_break_fraction": null
+  }
+}

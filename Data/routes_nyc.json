@@ -1,0 +1,404 @@
+[
+  {
+    "vehicle_id": 0,
+    "route": [
+      {
+        "type": "dropoff",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 5.5,
+        "distance_from_previous": 10.0
+      },
+      {
+        "type": "pickup",
+        "rider_id": 0,
+        "x": 5.0,
+        "y": 6.0,
+        "distance_from_previous": 1.0
+      }
+    ],
+    "total_distance": 11.0,
+    "estimated_time": 1100.0,
+    "riders": [
+      {
+        "rider_id": 34,
+        "pickup": {
+          "x": 5.0,
+          "y": 6.0
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 5.5
+        },
+        "request_time": 56206.0
+      }
+    ]
+  },
+  {
+    "vehicle_id": 1,
+    "route": [
+      {
+        "type": "dropoff",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 5.5,
+        "distance_from_previous": 10.0
+      },
+      {
+        "type": "pickup",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 6.0,
+        "distance_from_previous": 0.5
+      },
+      {
+        "type": "dropoff",
+        "rider_id": 1,
+        "x": 4.5,
+        "y": 6.0,
+        "distance_from_previous": 0.0
+      },
+      {
+        "type": "pickup",
+        "rider_id": 1,
+        "x": 5.0,
+        "y": 6.0,
+        "distance_from_previous": 0.5
+      }
+    ],
+    "total_distance": 11.0,
+    "estimated_time": 1100.0,
+    "riders": [
+      {
+        "rider_id": 37,
+        "pickup": {
+          "x": 4.5,
+          "y": 6.0
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 5.5
+        },
+        "request_time": 55515.0
+      },
+      {
+        "rider_id": 39,
+        "pickup": {
+          "x": 5.0,
+          "y": 6.0
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 6.0
+        },
+        "request_time": 55987.0
+      }
+    ]
+  },
+  {
+    "vehicle_id": 2,
+    "route": [
+      {
+        "type": "dropoff",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 4.0,
+        "distance_from_previous": 8.5
+      },
+      {
+        "type": "pickup",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 5.5,
+        "distance_from_previous": 1.5
+      },
+      {
+        "type": "dropoff",
+        "rider_id": 1,
+        "x": 4.5,
+        "y": 6.0,
+        "distance_from_previous": 0.5
+      },
+      {
+        "type": "pickup",
+        "rider_id": 1,
+        "x": 5.0,
+        "y": 6.0,
+        "distance_from_previous": 0.5
+      }
+    ],
+    "total_distance": 11.0,
+    "estimated_time": 1100.0,
+    "riders": [
+      {
+        "rider_id": 16,
+        "pickup": {
+          "x": 4.5,
+          "y": 5.5
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 4.0
+        },
+        "request_time": 55838.0
+      },
+      {
+        "rider_id": 39,
+        "pickup": {
+          "x": 5.0,
+          "y": 6.0
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 6.0
+        },
+        "request_time": 55987.0
+      }
+    ]
+  },
+  {
+    "vehicle_id": 3,
+    "route": [
+      {
+        "type": "dropoff",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 6.0,
+        "distance_from_previous": 10.5
+      },
+      {
+        "type": "pickup",
+        "rider_id": 0,
+        "x": 5.0,
+        "y": 6.0,
+        "distance_from_previous": 0.5
+      }
+    ],
+    "total_distance": 11.0,
+    "estimated_time": 1100.0,
+    "riders": [
+      {
+        "rider_id": 39,
+        "pickup": {
+          "x": 5.0,
+          "y": 6.0
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 6.0
+        },
+        "request_time": 55987.0
+      }
+    ]
+  },
+  {
+    "vehicle_id": 4,
+    "route": [
+      {
+        "type": "dropoff",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 4.0,
+        "distance_from_previous": 8.5
+      },
+      {
+        "type": "pickup",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 5.5,
+        "distance_from_previous": 1.5
+      }
+    ],
+    "total_distance": 10.0,
+    "estimated_time": 1000.0,
+    "riders": [
+      {
+        "rider_id": 16,
+        "pickup": {
+          "x": 4.5,
+          "y": 5.5
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 4.0
+        },
+        "request_time": 55838.0
+      }
+    ]
+  },
+  {
+    "vehicle_id": 5,
+    "route": [
+      {
+        "type": "dropoff",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 5.5,
+        "distance_from_previous": 10.0
+      },
+      {
+        "type": "pickup",
+        "rider_id": 0,
+        "x": 5.0,
+        "y": 6.0,
+        "distance_from_previous": 1.0
+      }
+    ],
+    "total_distance": 11.0,
+    "estimated_time": 1100.0,
+    "riders": [
+      {
+        "rider_id": 34,
+        "pickup": {
+          "x": 5.0,
+          "y": 6.0
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 5.5
+        },
+        "request_time": 56206.0
+      }
+    ]
+  },
+  {
+    "vehicle_id": 6,
+    "route": [
+      {
+        "type": "dropoff",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 5.5,
+        "distance_from_previous": 10.0
+      },
+      {
+        "type": "pickup",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 6.0,
+        "distance_from_previous": 0.5
+      }
+    ],
+    "total_distance": 10.5,
+    "estimated_time": 1050.0,
+    "riders": [
+      {
+        "rider_id": 37,
+        "pickup": {
+          "x": 4.5,
+          "y": 6.0
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 5.5
+        },
+        "request_time": 55515.0
+      }
+    ]
+  },
+  {
+    "vehicle_id": 7,
+    "route": [
+      {
+        "type": "dropoff",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 4.0,
+        "distance_from_previous": 8.5
+      },
+      {
+        "type": "pickup",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 5.5,
+        "distance_from_previous": 1.5
+      }
+    ],
+    "total_distance": 10.0,
+    "estimated_time": 1000.0,
+    "riders": [
+      {
+        "rider_id": 16,
+        "pickup": {
+          "x": 4.5,
+          "y": 5.5
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 4.0
+        },
+        "request_time": 55838.0
+      }
+    ]
+  },
+  {
+    "vehicle_id": 8,
+    "route": [
+      {
+        "type": "dropoff",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 5.5,
+        "distance_from_previous": 10.0
+      },
+      {
+        "type": "pickup",
+        "rider_id": 0,
+        "x": 5.0,
+        "y": 6.0,
+        "distance_from_previous": 1.0
+      }
+    ],
+    "total_distance": 11.0,
+    "estimated_time": 1100.0,
+    "riders": [
+      {
+        "rider_id": 34,
+        "pickup": {
+          "x": 5.0,
+          "y": 6.0
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 5.5
+        },
+        "request_time": 56206.0
+      }
+    ]
+  },
+  {
+    "vehicle_id": 9,
+    "route": [
+      {
+        "type": "dropoff",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 5.5,
+        "distance_from_previous": 10.0
+      },
+      {
+        "type": "pickup",
+        "rider_id": 0,
+        "x": 4.5,
+        "y": 6.0,
+        "distance_from_previous": 0.5
+      }
+    ],
+    "total_distance": 10.5,
+    "estimated_time": 1050.0,
+    "riders": [
+      {
+        "rider_id": 37,
+        "pickup": {
+          "x": 4.5,
+          "y": 6.0
+        },
+        "dropoff": {
+          "x": 4.5,
+          "y": 5.5
+        },
+        "request_time": 55515.0
+      }
+    ]
+  }
+]
